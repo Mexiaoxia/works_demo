@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>丸子爷爷</title>
+</head>
+<style>
+	*{margin:0px;padding: 0px;background:rgb(255,239,94);}
+	.grandpa{ position: absolute;top: 40px;left: 280px; z-index: 10; width: 126px; height: 500px;}
+	.hairs{position: absolute;z-index: 3;width: 126px;}
+	.hair{width: 1px; height: 5px;position: absolute;background: rgb(21,33,49);}
+	.hair1{left: 40px;top: 12px;}
+	.hair2{left: 50px; top: 8px;}
+	.hair3{left: 62px; top: 5px;}
+	.hair4{right: 50px; top: 8px;}
+	.hair5{right: 40px; top: 12px;}
+	.left-ear{left:-10px;}
+	.ear{width:20px;height:20px;position: absolute;top: 90px;z-index: 1;background:rgb(248,187,159);border:1px solid rgb(21,33,49);border-image:initial;border-radius:50%;}
+	.right-ear{right:-10px;}
+	.header{position: absolute;;top: 10px;width: 126px; height: 180px;background:#f8bb9f;display: block;z-index: 2;border-radius: 175% 175% 150% 150%;border:1px solid #152131;}
+	.bhair{background:#153121;width:1px;height: 3px;position: absolute;z-index:3;top:22px;}
+	.bhair1{left:50px;transform:rotate(-20deg);}
+	.bhair2{left:63px;}
+	.bhair3{right:50px;transform: rotate(20deg);}
+	.wrinkle{position: absolute;height: 1px;background:#152131;border-radius:50%;z-index: 4;}
+	.wrinkle1{top: 40px;left: 48px; width: 30px;}
+	.wrinkle2{top: 50px;left: 53px;width: 20px;}
+	.brow{position: absolute;top: 60px;width: 50px; height: 30px;border-radius:50%;background:rgb(21,33,49);z-index: 2;}
+	.brow:after{content:"";position: absolute;border-radius:50%;width: 60px;height: 30px;background:#f8bb9f; top: 1px; left: -1px;}
+	.left-brow{left:20px;transform:rotate(10deg);}
+	.right-brow{left: 67px;transform: rotate(10deg);}
+	.eye{position: absolute;top: 80px;width: 30px;height:50px;border-radius: 50%;background: #152131; z-index: 2;}
+	.eye:after{content:"";background: #f8bb9f;width: 34px;height:55px; position:absolute;top: 1px;left: 0px; border-radius:50%;}
+	.eye_left{left: 20px;transform: rotate(30deg);}
+	.eye_right{left: 80px; top: 79px;transform: rotate(-40deg) rotateY(160deg);}
+	.nose{width: 6px;height: 22px;position: absolute;top: 105px;left: 58px;background: #f8bb9f;z-index: 2;border-radius: 50%;border:1px solid #152131; }
+	.nose:after{content:"";width: 4px;height:22px;background:#f8bb9f;position: absolute;top:-5px;left: 1px;}
+	.mouth{width: 30px;height: 30px;border:1px solid #152131;z-index: 2;position: absolute;top: 130px; left: 46px;border-radius:50%;background:#d96b6e;}
+	.mouth:after{content: "";width: 60px;height: 30px;background:#f8bb9f;position: absolute;left:-20px;top:-10px;border-radius:50%;}
+	.header:after{content:"";border:1px solid #152131;background:#f8bb9f;width: 14px;height: 10px;position: absolute;left:50%;bottom: -12px;margin-left:-7px;}
+	.clothes{width: 100px;height: 130px;background:#a5d1d2;position: absolute;top:200px;left: 14px;border-radius:50% 50% 10% 10%;border:1px solid #152131;z-index: 2;}
+	.collar{width: 100px;height: 130px;background:#a5d1d2;position: absolute;border-radius:50% 50% 10% 10%;z-index:4;overflow: hidden;}
+	.collar:after{content:"";width: 40px;height: 40px;background:#a5d1d2;border-radius: 50%;border:1px solid #152131;position: absolute;left:30px;top:-20px;z-index: 5;}
+	.cover{width: 102px;height:60px;background:#a5d1d2;border-radius: 50% 50% 10% 10%; position: absolute;top:0px;}
+	.hand{width: 150px;height:110px;background:#a5d1d2;border:1px solid #152131;position: absolute;top:200px;left: -13px;border-radius:90% 90% 10% 10%;}
+	.trousers{width: 96px;height: 140px;background: #6c8d6e;border:1px solid #152131;position: absolute;top: 331px;left: 16px;}
+	.trousers:after{content:"";width:400px; height: 100px; background:#ffef5e;position: absolute;top: 250px;left:-152px;z-index: 6;transform:rotate(82deg) scale(0.825) skew(70deg) translate(0px);}
+	.foot{width: 30px;height:15px;background:#a18883;position: absolute;top: 473px;}
+	.left_foot{width: 25px; left: 16px;}
+	.right_foot{left:84px;}
+	.shoes{width: 45px;height:18px;background:#555a6d;position: absolute;top: 483px;}
+	.left_shoes{left: -4px;border-radius:50% 0% 30% 50%;transform:rotate(-10deg);}
+	.right_shoes{left:84px;border-radius:0% 50% 50% 30%;transform:rotate(10deg)}
+</style>
+<script>
+	window.onload=function(){
+		var oPa=document.getElementById('grandpa');
+		oPa.onmousedown=function(ev){
+			var oEvent=ev || event;
+			var disX=oEvent.clientX-oPa.offsetLeft;
+			var disY=oEvent.clientY-oPa.offsetTop;
+			document.onmousemove=function(ev){
+				var oEvent=ev || event;
+				var l=oEvent.clientX-disX;
+				var t=oEvent.clientY-disY;
+				l<0 && (l=0);
+				l>document.documentElement.clientWidth-oPa.offsetWidth && (l=document.documentElement.clientWidth-oPa.offsetWidth);
+				t<0 && (t=0);
+				t>document.documentElement.clientHeight-oPa.offsetHeight && (t=document.documentElement.clientHeight-oPa.offsetHeight);
+				oPa.style.left=l+'px';
+				oPa.style.top=t+'px';
+			}
+			document.onmouseup=function(){
+				document.onmouseup=null;
+				document.onmousemove=null;
+				oPa.releaseCapture && oPa.releaseCapture();
+			}
+			oPa.setCapture && oPa.setCapture();
+			return false;
+		}
+	}
+</script>
+<body>
+	<div class="grandpa" id=grandpa>
+		<div class="hairs">
+			<div class="hair hair1"></div>
+			<div class="hair hair2"></div>
+			<div class="hair hair3"></div>
+			<div class="hair hair4"></div>
+			<div class="hair hair5"></div>
+		</div>
+		<div class="ear left-ear"></div>
+		<div class="ear right-ear"></div>
+		<div class="header"></div>
+		<div class="bhairs">
+			<div class="bhair bhair1"></div>
+			<div class="bhair bhair2"></div>
+			<div class="bhair bhair3"></div>
+			<div class="wrinkle wrinkle1"></div>
+			<div class="wrinkle wrinkle2"></div>
+		</div>
+		<div class="brow left-brow"></div>
+		<div class="brow right-brow"></div>
+		<div class="eye eye_left"></div>
+		<div class="eye eye_right"></div>
+		<div class="nose"></div>
+		<div class="mouth"></div>
+		<div class="clothes">
+			<div class="collar"></div>
+			<div class="cover"></div>
+		</div>
+		<div class="hand"></div>
+		<div class="trousers"></div>
+		<div class="foot left_foot"></div>
+		<div class="foot right_foot"></div>
+		<div class="shoes left_shoes"></div>
+		<div class="shoes right_shoes"></div>
+	</div>
+</body>
+</html>
